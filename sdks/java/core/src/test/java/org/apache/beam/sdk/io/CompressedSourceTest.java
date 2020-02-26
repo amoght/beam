@@ -82,7 +82,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class CompressedSourceTest {
 
-  private final double delta = 1e-6;
+  private static double DELTA = 1e-6;
 
   @Rule public TemporaryFolder tmpFolder = new TemporaryFolder();
 
@@ -1040,7 +1040,7 @@ public class CompressedSourceTest {
       assertThat(readerOrig, instanceOf(CompressedReader.class));
       CompressedReader<Byte> reader = (CompressedReader<Byte>) readerOrig;
       // before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(1, reader.getSplitPointsRemaining());
 
@@ -1048,7 +1048,7 @@ public class CompressedSourceTest {
       assertFalse(reader.start());
 
       // after reading empty source
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
@@ -1067,7 +1067,7 @@ public class CompressedSourceTest {
       assertThat(readerOrig, instanceOf(CompressedReader.class));
       CompressedReader<Byte> reader = (CompressedReader<Byte>) readerOrig;
       // before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(1, reader.getSplitPointsRemaining());
 
@@ -1084,7 +1084,7 @@ public class CompressedSourceTest {
       assertFalse(reader.advance());
 
       // after reading source
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(1, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
@@ -1103,13 +1103,13 @@ public class CompressedSourceTest {
       assertThat(readerOrig, instanceOf(CompressedReader.class));
       CompressedReader<Byte> reader = (CompressedReader<Byte>) readerOrig;
       // before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(1, reader.getSplitPointsRemaining());
       // confirm empty
       assertFalse(reader.start());
       // after reading empty source
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
@@ -1129,7 +1129,7 @@ public class CompressedSourceTest {
       assertThat(readerOrig, instanceOf(CompressedReader.class));
       CompressedReader<Byte> reader = (CompressedReader<Byte>) readerOrig;
       // before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(1, reader.getSplitPointsRemaining());
 
@@ -1146,7 +1146,7 @@ public class CompressedSourceTest {
       assertFalse(reader.advance());
 
       // after reading source
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(1, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
@@ -1165,7 +1165,7 @@ public class CompressedSourceTest {
       assertThat(readerOrig, instanceOf(CompressedReader.class));
       CompressedReader<Byte> reader = (CompressedReader<Byte>) readerOrig;
       // before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(1, reader.getSplitPointsRemaining());
 
@@ -1173,7 +1173,7 @@ public class CompressedSourceTest {
       assertFalse(reader.start());
 
       // after reading empty source
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
@@ -1193,7 +1193,7 @@ public class CompressedSourceTest {
       assertThat(readerOrig, instanceOf(CompressedReader.class));
       CompressedReader<Byte> reader = (CompressedReader<Byte>) readerOrig;
       // before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(1, reader.getSplitPointsRemaining());
 
@@ -1210,7 +1210,7 @@ public class CompressedSourceTest {
       assertFalse(reader.advance());
 
       // after reading source
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(1, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
@@ -1261,7 +1261,7 @@ public class CompressedSourceTest {
       FileBasedReader<Byte> reader = (FileBasedReader<Byte>) readerOrig;
 
       // Check preconditions before starting
-      assertEquals(0.0, reader.getFractionConsumed(), delta);
+      assertEquals(0.0, reader.getFractionConsumed(), DELTA);
       assertEquals(0, reader.getSplitPointsConsumed());
       assertEquals(BoundedReader.SPLIT_POINTS_UNKNOWN, reader.getSplitPointsRemaining());
 
@@ -1277,7 +1277,7 @@ public class CompressedSourceTest {
 
       // Confirm empty and check post-conditions
       assertFalse(reader.advance());
-      assertEquals(1.0, reader.getFractionConsumed(), delta);
+      assertEquals(1.0, reader.getFractionConsumed(), DELTA);
       assertEquals(2, reader.getSplitPointsConsumed());
       assertEquals(0, reader.getSplitPointsRemaining());
     }
